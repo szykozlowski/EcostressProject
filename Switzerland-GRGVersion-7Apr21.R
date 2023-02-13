@@ -6,14 +6,15 @@ library(rgdal)
 
 ######
 # Add country outline: 
-setwd("~goldsmit/Dropbox/NASA-ECOSTRESS/BernardoProject/Switzerland/Bernardo_All_Swiz_Data/Switzerland copy/Swiz_Shapefile/Switzerland_shapefile")
+setwd("C:/Users/Szymon/Desktop/EcostressProject/Data/Swiz_Shapefile/Switzerland_shapefile")
 switz = readOGR("ch_1km.shp")
 # reproject spatial outline to match raster data
 switz_RP = spTransform(switz, crs("+proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0"))
 
 ######
 # Add mask:
-forestmask = readOGR("~goldsmit/Dropbox/NASA-ECOSTRESS/BernardoProject/Switzerland/Bernardo_All_Swiz_Data/Switzerland copy/Swiz_Forest_Cover_Shapefile/Vector_Landuse_CH/VEC200_LandCover.shp")
+forestmask = readOGR("C:/Users/Szymon/Desktop/EcostressProject/Data/Swiz_Forest_Cover_Shapefile/Vector_Landuse_CH/VEC200_LandCover.shp")
+
 forestmask_RP = spTransform(forestmask,crs("+proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0"))
 
 
@@ -21,7 +22,7 @@ forestmask_RP = spTransform(forestmask,crs("+proj=longlat +datum=WGS84 +no_defs 
 
 #https://strimas.com/post/processing-large-rasters-in-r/
 
-/Users/goldsmit/Dropbox/NASA-ECOSTRESS/BernardoProject/Switzerland/Bernardo_All_Swiz_Data/Switzerland copy/Switz_WUE_July_2018_TIF
+#/Users/goldsmit/Dropbox/NASA-ECOSTRESS/BernardoProject/Switzerland/Bernardo_All_Swiz_Data/Switzerland copy/Switz_WUE_July_2018_TIF
 
 # JULY 2018 TIF
 
@@ -68,38 +69,38 @@ for(i in test.dir){
 
 
 # AUG 2018 TIF
-setwd("~goldsmit/Dropbox/NASA-ECOSTRESS/BernardoProject/Switzerland/Bernardo_All_Swiz_Data/Switzerland copy/Switz_WUE_Aug_2018_TIF")
-Swiz_rastlist_AUG_18 <- list.files(path = setwd("~goldsmit/Dropbox/NASA-ECOSTRESS/BernardoProject/Switzerland/Bernardo_All_Swiz_Data/Switzerland copy/Switz_WUE_Aug_2018_TIF"),pattern='.tif$', all.files=TRUE, full.names=FALSE)
+setwd("C:/Users/Szymon/Desktop/EcostressProject/Data/Switz_WUE_Aug_2018_TIF")
+Swiz_rastlist_AUG_18 <- list.files(path = setwd("C:/Users/Szymon/Desktop/EcostressProject/Data/Switz_WUE_Aug_2018_TIF"),pattern='.tif$', all.files=TRUE, full.names=FALSE)
 allrasters_Swiz_AUG_18 <- lapply(Swiz_rastlist_AUG_18, raster)
 
 # JUNE 2019 TIF
-setwd("~goldsmit/Dropbox/NASA-ECOSTRESS/BernardoProject/Switzerland/Bernardo_All_Swiz_Data/Switzerland copy/Switz_WUE_June_2019_TIF")
-Swiz_rastlist_JUNE_19 <- list.files(path = setwd("~goldsmit/Dropbox/NASA-ECOSTRESS/BernardoProject/Switzerland/Bernardo_All_Swiz_Data/Switzerland copy/Switz_WUE_June_2019_TIF"),pattern='.tif$', all.files=TRUE, full.names=FALSE)
+setwd("C:/Users/Szymon/Desktop/EcostressProject/Data/Switz_WUE_June_2019_TIF")
+Swiz_rastlist_JUNE_19 <- list.files(path = setwd("C:/Users/Szymon/Desktop/EcostressProject/Data/Switz_WUE_June_2019_TIF"),pattern='.tif$', all.files=TRUE, full.names=FALSE)
 allrasters_Swiz_JUNE_19 <- lapply(Swiz_rastlist_JUNE_19, raster)
 
 # JULY 2019 TIF
-setwd("~goldsmit/Dropbox/NASA-ECOSTRESS/BernardoProject/Switzerland/Bernardo_All_Swiz_Data/Switzerland copy/Switz_WUE_July_2019_TIF")
-Swiz_rastlist_JULY_19 <- list.files(path = setwd("~goldsmit/Dropbox/NASA-ECOSTRESS/BernardoProject/Switzerland/Bernardo_All_Swiz_Data/Switzerland copy/Switz_WUE_July_2019_TIF"),pattern='.tif$', all.files=TRUE, full.names=FALSE)
+setwd("C:/Users/Szymon/Desktop/EcostressProject/Data/Switz_WUE_July_2019_TIF")
+Swiz_rastlist_JULY_19 <- list.files(path = setwd("C:/Users/Szymon/Desktop/EcostressProject/Data/Switz_WUE_July_2019_TIF"),pattern='.tif$', all.files=TRUE, full.names=FALSE)
 allrasters_Swiz_JULY_19 <- lapply(Swiz_rastlist_JULY_19, raster)
 
 # AUG 2019 TIF
-setwd("~goldsmit/Dropbox/NASA-ECOSTRESS/BernardoProject/Switzerland/Bernardo_All_Swiz_Data/Switzerland copy/Switz_WUE_Aug_2019_TIF")
-Swiz_rastlist_AUG_19 <- list.files(path = setwd("~goldsmit/Dropbox/NASA-ECOSTRESS/BernardoProject/Switzerland/Bernardo_All_Swiz_Data/Switzerland copy/Switz_WUE_Aug_2019_TIF"),pattern='.tif$', all.files=TRUE, full.names=FALSE)
+setwd("C:/Users/Szymon/Desktop/EcostressProject/Data/Switz_WUE_Aug_2019_TIF")
+Swiz_rastlist_AUG_19 <- list.files(path = setwd("C:/Users/Szymon/Desktop/EcostressProject/Data/Switz_WUE_Aug_2019_TIF"),pattern='.tif$', all.files=TRUE, full.names=FALSE)
 allrasters_Swiz_AUG_19 <- lapply(Swiz_rastlist_AUG_19, raster)
 
 # JUNE 2020 TIF
-setwd("~goldsmit/Dropbox/NASA-ECOSTRESS/BernardoProject/Switzerland/Bernardo_All_Swiz_Data/Switzerland copy/Switz_WUE_June_2020_TIF")
-Swiz_rastlist_JUNE_20 <- list.files(path = setwd("~goldsmit/Dropbox/NASA-ECOSTRESS/BernardoProject/Switzerland/Bernardo_All_Swiz_Data/Switzerland copy/Switz_WUE_June_2020_TIF"),pattern='.tif$', all.files=TRUE, full.names=FALSE)
+setwd("C:/Users/Szymon/Desktop/EcostressProject/Data/Switz_WUE_June_2020_TIF")
+Swiz_rastlist_JUNE_20 <- list.files(path = setwd("C:/Users/Szymon/Desktop/EcostressProject/Data/Switz_WUE_June_2020_TIF"),pattern='.tif$', all.files=TRUE, full.names=FALSE)
 allrasters_Swiz_JUNE_20 <- lapply(Swiz_rastlist_JUNE_20, raster)
 
 # JULY 2020 TIF
-setwd("~goldsmit/Dropbox/NASA-ECOSTRESS/BernardoProject/Switzerland/Bernardo_All_Swiz_Data/Switzerland copy/Switz_WUE_July_2020_TIF")
-Swiz_rastlist_JULY_20 <- list.files(path = setwd("~goldsmit/Dropbox/NASA-ECOSTRESS/BernardoProject/Switzerland/Bernardo_All_Swiz_Data/Switzerland copy/Switz_WUE_July_2020_TIF"),pattern='.tif$', all.files=TRUE, full.names=FALSE)
+setwd("C:/Users/Szymon/Desktop/EcostressProject/Data/Switz_WUE_July_2020_TIF")
+Swiz_rastlist_JULY_20 <- list.files(path = setwd("C:/Users/Szymon/Desktop/EcostressProject/Data/Switz_WUE_July_2020_TIF"),pattern='.tif$', all.files=TRUE, full.names=FALSE)
 allrasters_Swiz_JULY_20 <- lapply(Swiz_rastlist_JULY_20, raster)
 
 # AUG 2020 TIF
-setwd("~goldsmit/Dropbox/NASA-ECOSTRESS/BernardoProject/Switzerland/Bernardo_All_Swiz_Data/Switzerland copy/Switz_WUE_Aug_2020_TIF")
-Swiz_rastlist_AUG_20 <- list.files(path = setwd("~goldsmit/Dropbox/NASA-ECOSTRESS/BernardoProject/Switzerland/Bernardo_All_Swiz_Data/Switzerland copy/Switz_WUE_Aug_2020_TIF"),pattern='.tif$', all.files=TRUE, full.names=FALSE)
+setwd("C:/Users/Szymon/Desktop/EcostressProject/Data/Switz_WUE_Aug_2020_TIF")
+Swiz_rastlist_AUG_20 <- list.files(path = setwd("C:/Users/Szymon/Desktop/EcostressProject/Data/Switz_WUE_Aug_2020_TIF"),pattern='.tif$', all.files=TRUE, full.names=FALSE)
 allrasters_Swiz_AUG_20 <- lapply(Swiz_rastlist_AUG_20, raster)
 
 # Summer 2018 #######################
