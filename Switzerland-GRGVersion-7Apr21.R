@@ -4,24 +4,24 @@ library(raster)
 library(reshape2)
 library(rgdal)
 
-######
-# Add country outline: 
+######Add key shapefiles: 
+
+# This is a chunk of code to add an outline of the country of Switzerland for mapping purposes. 
 setwd("C:/Users/Szymon/Desktop/EcostressProject/Data/Swiz_Shapefile/Switzerland_shapefile")
 switz = readOGR("ch_1km.shp")
 # reproject spatial outline to match raster data
 switz_RP = spTransform(switz, crs("+proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0"))
 
 ######
-# Add mask:
+# This is a shapefile that has the locations (pixels) of the forest in Switzerland that can be used to "mask" non-forest locations: 
 forestmask = readOGR("C:/Users/Szymon/Desktop/EcostressProject/Data/Swiz_Forest_Cover_Shapefile/Vector_Landuse_CH/VEC200_LandCover.shp")
-
+#Transform the shapefile so that it has the same projection as the other files: 
 forestmask_RP = spTransform(forestmask,crs("+proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0"))
 
 
-#######################################################################
+######Add ECOSTRESS rasters: 
 
 #https://strimas.com/post/processing-large-rasters-in-r/
-
 #/Users/goldsmit/Dropbox/NASA-ECOSTRESS/BernardoProject/Switzerland/Bernardo_All_Swiz_Data/Switzerland copy/Switz_WUE_July_2018_TIF
 
 # JULY 2018 TIF
@@ -30,9 +30,6 @@ forestmask_RP = spTransform(forestmask,crs("+proj=longlat +datum=WGS84 +no_defs 
 current_path <- getActiveDocumentContext()$path
 setwd(dirname(current_path))
 library(rstudioapi)
-
-
-
 
 # setwd("~goldsmit/Dropbox/NASA-ECOSTRESS/BernardoProject/Switzerland/Bernardo_All_Swiz_Data/Switzerland copy/Switz_WUE_July_2018_TIF")
 # Swiz_rastlist_JULY_18 <- list.files(path = setwd("~goldsmit/Dropbox/NASA-ECOSTRESS/BernardoProject/Switzerland/Bernardo_All_Swiz_Data/Switzerland copy/Switz_WUE_July_2018_TIF"),pattern='.tif$', all.files=TRUE, full.names=FALSE)
@@ -67,7 +64,7 @@ for(i in test.dir){
 
 ###allrasters_Swiz_JULY_18.n2 <- lapply(allrasters_Swiz_JULY_18,FUN=mask,forestmask_RP)
 
-
+#Due to a error on the international space station, there was no data for June and July 2018
 # AUG 2018 TIF
 setwd("C:/Users/Szymon/Desktop/EcostressProject/Data/Switz_WUE_Aug_2018_TIF")
 Swiz_rastlist_AUG_18 <- list.files(path = setwd("C:/Users/Szymon/Desktop/EcostressProject/Data/Switz_WUE_Aug_2018_TIF"),pattern='.tif$', all.files=TRUE, full.names=FALSE)
@@ -146,7 +143,7 @@ plot(stack_Swiz_Summer_18_sd, na.rm = TRUE, col= brewer.pal(9,"RdYlBu"))
 # Extend June 2019
 extended_allrasters_Swiz_JUNE_19 = lapply(allrasters_Swiz_JUNE_19, resample, extend_whole, method = "bilinear")
 stack_Swiz_JUNE_19 = stack(extended_allrasters_Swiz_JUNE_19)
-
+x`
 # Extend JULY 2019
 extended_allrasters_Swiz_JULY_19 = lapply(allrasters_Swiz_JULY_19, resample, extend_whole, method = "bilinear")
 stack_Swiz_JULY_19 = stack(extended_allrasters_Swiz_JULY_19)
