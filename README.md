@@ -1,1 +1,1 @@
-Data on Water Use Efficiency in Switzerland
+This is a project that analyzes the Water Use Efficiency of vegetation in Switzerland.
